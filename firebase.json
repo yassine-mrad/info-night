@@ -1,0 +1,19 @@
+{
+  "hosting": {
+    "hosting": {
+      "source": "./dist/ocean-app-nuit-info-2025/browser/"
+    },
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

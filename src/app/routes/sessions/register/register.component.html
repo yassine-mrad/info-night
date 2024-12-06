@@ -1,0 +1,57 @@
+<div class="ocean-theme d-flex align-items-center justify-content-center">
+  <div class="waves">
+    <div class="wave wave1"></div>
+    <div class="wave wave2"></div>
+    <div class="wave wave3"></div>
+  </div>
+  <div class="floating-elements">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="fish fish1">🐠</div>
+    <div class="fish fish2">🐟</div>
+    <div class="fish fish3">🐡</div>
+  </div>
+
+  <mat-card class="ocean-card" style="max-width: 380px;">
+    <mat-card-header class="m-b-24">
+      <mat-card-title>
+        {{'register_welcome' | translate}}, <br>
+        {{'register_title' | translate}}
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form class="form-field-full" [formGroup]="registerForm">
+        <mat-form-field appearance="outline">
+          <mat-label>{{'username' | translate}}</mat-label>
+          <input matInput formControlName="username" required>
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{'password' | translate}}</mat-label>
+          <input matInput type="password" formControlName="password" required>
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{'confirm_password' | translate}}</mat-label>
+          <input matInput type="password" formControlName="confirmPassword" required>
+
+        </mat-form-field>
+
+        <mat-checkbox>{{'read_and_agree' | translate}}</mat-checkbox>
+
+        <button class="w-full m-y-16" mat-flat-button>{{'register' | translate}}</button>
+
+        <div>
+          <span>{{'have_an_account' | translate}}? </span>
+          <a routerLink="/auth/login">{{'login' | translate}}</a>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

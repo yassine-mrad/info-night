@@ -1,0 +1,81 @@
+@use 'sass:color';
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+$dark-config: (
+  color: (theme-type: 'dark',
+    primary: mat.$cyan-palette,
+    tertiary: mat.$orange-palette,
+  ),
+);
+
+// Ocean theme colors (adjust as needed to match your design)
+$ocean-primary: #007bff;
+$ocean-primary-container: #d1e7ff;
+$ocean-secondary: #6c757d;
+$ocean-secondary-container: #e9ecef;
+$ocean-tertiary: #343a40;
+$ocean-tertiary-container: #f8f9fa;
+$ocean-surface: #ffffff;
+$ocean-surface-variant: #f8f9fa;
+$ocean-surface-container: #ffffff;
+$ocean-surface-container-high: #ffffff;
+$ocean-surface-container-highest: #ffffff;
+$ocean-background: #ffffff;
+$ocean-on-primary: #ffffff;
+$ocean-on-secondary: #ffffff;
+$ocean-on-tertiary: #ffffff;
+$ocean-on-surface: #111111;
+$ocean-on-surface-variant: #111111;
+$ocean-on-surface-container: #111111;
+$ocean-on-surface-container-high: #111111;
+$ocean-on-surface-container-highest: #111111;
+$ocean-on-background: #111111;
+$ocean-outline: #111111;
+$ocean-shadow: #111111;
+$ocean-inverse-surface: #111111;
+$ocean-inverse-on-surface: #ffffff;
+
+
+html {
+  --body-font-family: 'Roboto', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  --code-font-family: 'Roboto Mono', monospace;
+  --gutter: 1rem;
+  --sidenav-width: 15rem;
+  --sidenav-collapsed-width: 4rem;
+}
+
+// Tokens for the app that are based on the current theme.
+@mixin theme($theme) {
+  $isDark: mat.get-theme-type($theme)=='dark';
+  $bg-color: mat.get-theme-color($theme, if($isDark, surface-container-high, surface-container));
+  $primary: mat.get-theme-color($theme, primary);
+  $primary-container: mat.get-theme-color($theme, primary-container);
+  $on-background: mat.get-theme-color($theme, on-background);
+  $on-secondary-container: mat.get-theme-color($theme, on-secondary-container);
+  $surface-variant: mat.get-theme-color($theme, surface-variant);
+  $surface-container-highest: mat.get-theme-color($theme, surface-container-highest);
+
+
+  --body-background-color: #{$bg-color};
+  --link-color: #{$primary};
+  --link-hover-color: #{color.adjust($primary, $lightness: -10%)};
+  --code-border-color: #{rgba($on-secondary-container, .08)};
+  --code-background-color: #{rgba($on-secondary-container, .04)};
+  --header-background-color: #{rgba($bg-color, .8)};
+  --user-panel-background-color: #{$bg-color};
+  --user-panel-hover-background-color: #{$surface-variant};
+  --sidemenu-heading-hover-background-color: #{$surface-container-highest};
+  --sidemenu-active-heading-text-color: #{$primary};
+  --sidemenu-active-heading-background-color: #{$primary-container};
+  --sidemenu-active-heading-hover-background-color: #{$primary-container};
+  --sidemenu-expanded-background-color: #{$bg-color};
+  --topmenu-text-color: #{$on-background};
+  --topmenu-background-color: #{rgba($bg-color, .8)};
+  --topmenu-item-active-background-color: #{$primary-container};
+  --topmenu-dropdown-item-active-text-color: #{$primary};
+  --toast-info-background-color: #{map.get(mat.$azure-palette, if($isDark, 30, 50))};
+  --toast-success-background-color: #{map.get(mat.$green-palette, if($isDark, 40, 60))};
+  --toast-warning-background-color: #{map.get(mat.$orange-palette, if($isDark, 40, 60))};
+  --toast-error-background-color: #{map.get(mat.$red-palette, if($isDark, 30, 50))};
+}
